@@ -32,15 +32,11 @@ public class RomanNumberToIntegerConverter {
         int i = 0;
         int integer = 0;
         while (i < rn.length()) {
-            if (i + 1 < rn.length()) {
-                if (value(rn.charAt(i)) < value(rn.charAt(i + 1))) {
-                    integer += value(rn.charAt(i + 1)) - value(rn.charAt(i));
-                    i++;
-                } else
-                    integer += value(rn.charAt(i));
-                i++;
+            if (i + 1 < rn.length() && value(rn.charAt(i)) < value(rn.charAt(i + 1))) {
+                integer -= value(rn.charAt(i));
             } else
-                return integer + value(rn.charAt(i));
+                integer += value(rn.charAt(i));
+            i++;
         }
         return integer;
     }
